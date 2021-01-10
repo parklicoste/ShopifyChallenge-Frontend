@@ -22,7 +22,7 @@ class MainNav extends React.Component{
 
     render(){
         return <div className="row mt-5">
-        <div class="col-md-10">
+        <div className="col-md-10">
             <nav className="navbar navbar-light bg-light">
                     <div className="container-fluid">
                         {/* <h2 class="navbar-brand ">Movie Name</h2> */}

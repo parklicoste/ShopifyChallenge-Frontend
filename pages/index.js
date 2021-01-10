@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import MainNav from './components/MainNav'
 
 
 export default function Home() {
@@ -7,14 +8,18 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>FrontEnd: Shopify Challenge</title>
-        <link rel="icon" href="\favicon.ico" />
+        <link rel="icon" href="logo.ico" />
+        
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to the <a href="https://github.com/parklicoste/ShopifyChallenge-Frontend/" target="_blank">Shoppies!</a>
-        </h1>
-      </main>
+        <div className="container-sm " >
+          <h1 className="display-1 text-bold mt-5">
+            Welcome to the <a href="https://github.com/parklicoste/ShopifyChallenge-Frontend/" target="_blank">Shoppies!</a>
+          </h1>
+          <MainNav/>
+        </div>
+        
+        
+      
 
       <footer className={styles.footer}>
         

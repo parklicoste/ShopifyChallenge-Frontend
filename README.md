@@ -6,7 +6,7 @@ First, run the development server:
 
 ```bash
 npm i axios --save
-npm install react-bootstrap bootstrap
+npm install react-bootstrap bootstrap --save
 
 npm run dev
 # or

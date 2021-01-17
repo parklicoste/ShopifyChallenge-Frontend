@@ -1,5 +1,6 @@
 import React from 'react';
 import {Modal, Button} from 'react-bootstrap'
+import LessLimit from './modals/LessLimit'
 
 class NominationList extends React.Component{
 
@@ -69,26 +70,7 @@ class NominationList extends React.Component{
             <div className="row-md-6 ml-5 pl-5 " style={{alignItems: "center"}}>
                 <button onClick={(e)=>this.clearAll()}  className="btn ml-5  btn-lg btn-primary"> Nominate</button>
             </div>
-            <Modal show={this.state.show} onHide={this.handleClose}>
-                <Modal.Header closeButton>
-                  <Modal.Title>Alert!</Modal.Title>
-              </Modal.Header>
-                  <Modal.Body>
-                      { this.props.nominations.length != 5 ?
-                     <div><p className="text-danger">Error! Sorry, this operation is not permitted until there are 5 movies to nominate. if you dont wish to nominate then press close or cancel</p> </div> : 
-                     <div><p className="text">Are you sure you want to nominate these movies</p> </div>}
-
-                  </Modal.Body>
-                  <Modal.Footer>
-                    <Button variant="secondary" onClick={this.handleClose}>
-                      Close
-                    </Button>
-                    { this.props.nominations.length != 5 ? <div></div> :
-                    <Button variant="primary" type="submit" onClick={(e)=>{this.submit(e)}}>
-                      Submit
-                    </Button>}
-                  </Modal.Footer>
-              </Modal>
+            <LessLimit show={this.state.show} handleClose={this.handleClose} limit={this.props.nominations.length} submit={this.submit}/>
             
         </div>)
 

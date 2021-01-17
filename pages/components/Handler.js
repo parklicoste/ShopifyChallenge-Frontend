@@ -21,9 +21,9 @@ class Handler extends React.Component{
         }
     }
     componentDidMount(){
-        let parsedArray = []
-        for(let obj in this.state.searchResults){
-            parsedArray.push({ Title: obj[Title], Year: obj[Year], id: obj[imdbId], show: false })
+        let x=this.state.searchResults, parsedArray = []
+        for(var i=0; i<x.length; i++){
+            parsedArray.push({ Title: x[i].Title, Year: x[i].Year, imdbID: x[i].imdbID })
         }
         this.setState({
             searchResults: parsedArray

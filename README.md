@@ -15,7 +15,7 @@ npm install --save-dev cross-env dotenv
 
 Now, start your development server,
 
-``bash
+```bash
 npm run dev
 # or
 yarn dev

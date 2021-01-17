@@ -4,6 +4,7 @@ import styles from '../../styles/Home.module.css';
 import MainNav from './MainNav';
 import SearchResults from './SearchResults'
 import axios from 'axios';
+import NominationList from './NominationList';
 
 const API =  'http://www.omdbapi.com/?i=tt3896198&apikey=ebc8a66b'
 
@@ -16,6 +17,7 @@ class Handler extends React.Component{
         this.state = {
             movie: "",
             searchResults: [],
+            nominationsList: []
         }
     }
     componentDidMount(){
@@ -48,6 +50,17 @@ class Handler extends React.Component{
             console.log(err);
             });
       }
+
+    addMovies = (movie) =>{
+        if(this.state.nominationsList.length ===  5){
+            alert("Error: Cannot add more than 5 movies");
+        }
+        else {
+            this.setState(prevState => ({
+                nominationsList: [...prevState.nominationsList, movie]
+              }))
+        }
+      }
     
 
     render(){
@@ -65,7 +78,8 @@ class Handler extends React.Component{
             <MainNav onMovieChange={this.fetchDataFromApi} /> 
             <div className="container-lg">
                 <div className="row justify-content-start">
-                    <SearchResults searchResults={this.state.searchResults}/>
+                    <SearchResults searchResults={this.state.searchResults} updateMovies={this.addMovies}/>
+                    <NominationList nominations={this.state.nominationsList}/>
                 </div>
             </div>
         </div>

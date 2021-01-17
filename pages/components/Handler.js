@@ -9,6 +9,7 @@ import MaxLimit from './modals/MaxLimit'
 import SearchError from './modals/SearchError';
 
 const API = process.env.API;
+// const prefix = '/ShopifyChallenge-Frontend';
 
 class Handler extends React.Component{
 

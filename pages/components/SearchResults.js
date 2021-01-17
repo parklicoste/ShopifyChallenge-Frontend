@@ -6,29 +6,12 @@ class SearchResults extends React.Component{
     constructor(props)
     {
         super(props);
-        
-        this.state = {
-            results: []
-        }
     }
 
     addMovie = (event, movie) =>{
         event.preventDefault();
-        console.log("my movie is:::::", movie)
         this.props.updateMovies(movie);
     }
-
-   
-    // checkBannedList = (id) =>{
-    //     let x = this.props.banList;
-    //     for(var i=0; i<x.length; i++){
-    //         if(x[i] === id){
-    //             return true;
-    //         }
-    //     }
-    //     return false;
-    // }
-    
     
 
     render(){

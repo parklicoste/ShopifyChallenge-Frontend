@@ -63,7 +63,6 @@ class Handler extends React.Component{
 
     addMovies = (movie) =>{
         if(this.state.nominationsList.length ===  5){
-            // alert("Error: Cannot add more than 5 movies");
             this.setState({
                 limitError: true
             })
@@ -71,17 +70,21 @@ class Handler extends React.Component{
         else {
             this.setState(prevState => ({
                 nominationsList: [...prevState.nominationsList, movie],
-                banned: [...prevState.nominationsList, movie.imdbID]
+                banned: [...prevState.banned, movie.imdbID]
               }))
         }
       }
 
       removeMovies = (movie) =>{
-        let x = this.state.nominationsList, y = this.state.banned
-        x.splice(movie,1)
-        y.splice(movie.imdbID, 1)
+        let x = this.state.nominationsList, y=this.state.banned, index = x.indexOf(movie)
+        x.splice(index,1)
+        y.splice(index,1)
+
         this.setState({
-            nominationsList: x
+            nominationsList: x,
+            banned: y
+            // banned: this.state.banned.filter(function(imdbID){
+            //     return imdbID != movie.imdbID})
             })
         
       }
@@ -111,7 +114,7 @@ class Handler extends React.Component{
         return <div className={styles.container}>
         <Head>
           <title>FrontEnd: Shopify Challenge</title>
-          <link rel="icon" href="favicon.ico" type="image/x-icon" />
+          <link rel="icon" href="https://aem.dropbox.com/cms/etc.clientlibs/settings/wcm/designs/dropbox-birch-help/clientlib-all/resources/32.svg" type="image/x-icon" />
           
           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
           
@@ -133,7 +136,7 @@ class Handler extends React.Component{
         </div>
           
         <footer className={styles.footer}>
-        <div className="card-footer text-muted justify-content-center">
+        <div className="card-footer text-muted justify-content-center mt-5">
             copyright@ Khushal Kumar Singh<br></br>
             Code uploaded on GitHub Parklicoste 
         </div>

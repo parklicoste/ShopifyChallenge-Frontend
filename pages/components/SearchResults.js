@@ -17,6 +17,16 @@ class SearchResults extends React.Component{
         console.log("my movie is:::::", movie)
         this.props.updateMovies(movie);
     }
+
+    // checkBannedList = (id) =>{
+    //     let x = this.props.banList;
+    //     for(var i=0; i<x.length; i++){
+    //         if(x[i] === id){
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
     
     
 
@@ -39,7 +49,7 @@ class SearchResults extends React.Component{
                             <td>{movie.Title}</td>
                             <td>{movie.Year}</td>
                             <td>
-                                <button disabled={movie.show} onClick={(e)=>this.addMovie(e,movie)} className="btn btn-sm btn-primary">
+                                <button disabled={(this.props.banList).includes(movie.imdbID)} onClick={(e)=>this.addMovie(e,movie)} className="btn btn-sm btn-primary">
                                     <i className="fa fa-plus"></i>
                                 </button>
                             </td>

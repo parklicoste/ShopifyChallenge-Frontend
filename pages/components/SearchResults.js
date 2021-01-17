@@ -28,7 +28,16 @@ class SearchResults extends React.Component{
                         </tr></thead>
 
                     <tbody>
-                        {this.props.searchResults.map((movie, index)=>
+                        {this.props.searchResults === undefined ? [].map((movie, index)=>
+                        <tr key={index}>
+                            <td>{movie.Title}</td>
+                            <td>{movie.Year}</td>
+                            <td>
+                                <button disabled={(this.props.banList).includes(movie.imdbID)} onClick={(e)=>this.addMovie(e,movie)} className="btn btn-sm btn-primary">
+                                    <i className="fa fa-plus"></i>
+                                </button>
+                            </td>
+                        </tr>) : this.props.searchResults.map((movie, index)=>
                         <tr key={index}>
                             <td>{movie.Title}</td>
                             <td>{movie.Year}</td>

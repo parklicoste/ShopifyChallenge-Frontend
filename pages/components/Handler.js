@@ -17,17 +17,17 @@ class Handler extends React.Component{
         this.state = {
             movie: "",
             searchResults: [],
-            nominationsList: []
+            nominationsList: [],
+            banned: []
         }
     }
     componentDidMount(){
-        let parsedArray = []
-        for(let obj in this.state.searchResults){
-            parsedArray.push({ Title: obj[Title], Year: obj[Year], id: obj[imdbId], show: false })
+        let x=this.state.searchResults, parsedArray = []
+        for(var i=0; i<x.length; i++){
+            parsedArray.push({ Title: x[i].Title, Year: x[i].Year, imdbID: x[i].imdbID })
         }
         this.setState({
             searchResults: parsedArray
-        
         })
 
     }
@@ -57,10 +57,30 @@ class Handler extends React.Component{
         }
         else {
             this.setState(prevState => ({
-                nominationsList: [...prevState.nominationsList, movie]
+                nominationsList: [...prevState.nominationsList, movie],
+                banned: [...prevState.nominationsList, movie.imdbID]
               }))
         }
       }
+
+      removeMovies = (movie) =>{
+        let x = this.state.nominationsList
+        x.splice(movie,1)
+            this.setState({
+                nominationsList: x
+                
+              })
+        
+      }
+      clearAll = () =>{
+        this.setState({
+            movie: "",
+            searchResults: [],
+            nominationsList: [],
+            banned: []
+        })
+      }
+      
     
 
     render(){
@@ -78,8 +98,9 @@ class Handler extends React.Component{
             <MainNav onMovieChange={this.fetchDataFromApi} /> 
             <div className="container-lg">
                 <div className="row justify-content-start">
-                    <SearchResults searchResults={this.state.searchResults} updateMovies={this.addMovies}/>
-                    <NominationList nominations={this.state.nominationsList}/>
+                    <SearchResults searchResults={this.state.searchResults} banList={this.state.banned} updateMovies={this.addMovies}/>
+
+                    <NominationList nominations={this.state.nominationsList} updateNominations={this.removeMovies} nominated={this.clearAll}/>
                 </div>
             </div>
         </div>

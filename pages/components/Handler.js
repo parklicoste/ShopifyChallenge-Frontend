@@ -115,7 +115,7 @@ class Handler extends React.Component{
         <Head>
           <title>FrontEnd: Shopify Challenge</title>
           <link rel="icon" href="https://aem.dropbox.com/cms/etc.clientlibs/settings/wcm/designs/dropbox-birch-help/clientlib-all/resources/32.svg" type="image/x-icon" />
-          
+
           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
           
         </Head>

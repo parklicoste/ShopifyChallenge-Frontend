@@ -53,7 +53,8 @@ class NominationList extends React.Component{
                         </tr></thead>
 
                     <tbody>
-                        {this.props.nominations.map((movie, index)=>
+                        {this.props.nominations === undefined ?
+                        [].map((movie, index)=>
                         <tr key={index}>
                             <td>{movie.Title}</td>
                             <td>{movie.Year}</td>
@@ -62,7 +63,18 @@ class NominationList extends React.Component{
                                     <i className="fa fa-trash"></i>
                                 </button>
                             </td>
-                        </tr>)}
+                        </tr>) :
+                        this.props.nominations.map((movie, index)=>
+                        <tr key={index}>
+                            <td>{movie.Title}</td>
+                            <td>{movie.Year}</td>
+                            <td>
+                                <button onClick={(e)=>this.removeMovie(e,movie)}className="btn btn-sm btn-danger">
+                                    <i className="fa fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>)
+                        }
                     </tbody>
                 </table>
             </div>
@@ -70,7 +82,10 @@ class NominationList extends React.Component{
             <div className="row-md-6 ml-5 pl-5 " style={{alignItems: "center"}}>
                 <button onClick={(e)=>this.clearAll()}  className="btn ml-5  btn-lg btn-primary"> Nominate</button>
             </div>
-            <LessLimit show={this.state.show} handleClose={this.handleClose} limit={this.props.nominations.length} submit={this.submit}/>
+            { this.props.NominationList === undefined ? 
+            <LessLimit show={this.state.show} handleClose={this.handleClose} limit={0} submit={this.submit}/> : <LessLimit show={this.state.show} handleClose={this.handleClose} limit={this.props.nominations.length} submit={this.submit}/>
+
+    }
             
         </div>)
 

@@ -1,7 +1,7 @@
-const withCSS = require('@zeit/next-css')
+require('dotenv').config()
 
-module.exports = withCSS({
-  cssLoaderOptions: {
-    url: false
-  }
-});
+module.exports ={
+  env: {
+    API : process.env.API_KEY
+  },
+};

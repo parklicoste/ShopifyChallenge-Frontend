@@ -8,7 +8,7 @@ import NominationList from './NominationList';
 import MaxLimit from './modals/MaxLimit'
 import SearchError from './modals/SearchError';
 
-const API =  'http://www.omdbapi.com/?i=tt3896198&apikey=ebc8a66b'
+const API = process.env.API;
 
 class Handler extends React.Component{
 
@@ -135,8 +135,8 @@ class Handler extends React.Component{
             <SearchError showError={this.state.showError} handleClose={this.handleClose}/>
         </div>
           
-        <footer className={styles.footer}>
-        <div className="card-footer text-muted justify-content-center mt-5">
+        <footer className="card-footer text-muted mt-5" style={{width: "100%", alignItems: "center"}}>
+        <div className="row">
             copyright@ Khushal Kumar Singh<br></br>
             Code uploaded on GitHub Parklicoste 
         </div>

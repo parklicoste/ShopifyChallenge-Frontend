@@ -5,6 +5,7 @@ import MainNav from './MainNav';
 import SearchResults from './SearchResults'
 import axios from 'axios';
 import NominationList from './NominationList';
+import {Modal, Button} from 'react-bootstrap'
 
 const API =  'http://www.omdbapi.com/?i=tt3896198&apikey=ebc8a66b'
 
@@ -14,11 +15,15 @@ class Handler extends React.Component{
     {
         super(props);
 
+        this.handleShow = this.handleShow.bind(this);
+        this.handleClose = this.handleClose.bind(this);
+
         this.state = {
             movie: "",
             searchResults: [],
             nominationsList: [],
-            banned: []
+            banned: [],
+            showError: false
         }
     }
     componentDidMount(){
@@ -33,22 +38,25 @@ class Handler extends React.Component{
     }
 
     fetchDataFromApi = (movie) =>{
-        axios.get(`${API}&s=${movie}`)
+        if(movie !== ""){
+            axios.get(`${API}&s=${movie}`)
         .then((res)=>{
             console.log("API response is",res.data);
-            if(res.data.Response){
+            if(res.data.Response === "True"){
                 this.setState({
                     searchResults: res.data.Search
                 })
                 this.componentDidMount();
             }
             else{
-                //I'll do alert thing
+                this.handleShow();
             }
           })
         .catch(err =>{
             console.log(err);
             });
+        }
+        
       }
 
     addMovies = (movie) =>{
@@ -77,8 +85,17 @@ class Handler extends React.Component{
             movie: "",
             searchResults: [],
             nominationsList: [],
-            banned: []
+            banned: [],
+            showError: false
         })
+      }
+
+      handleClose() {
+        this.setState({ showError: false});
+      }
+      
+      handleShow() {
+        this.setState({ showError: true });
       }
       
     
@@ -103,6 +120,19 @@ class Handler extends React.Component{
                     <NominationList nominations={this.state.nominationsList} updateNominations={this.removeMovies} nominated={this.clearAll}/>
                 </div>
             </div>
+            <Modal show={this.state.showError} onHide={this.handleClose}>
+                <Modal.Header closeButton>
+                  <Modal.Title>Alert!</Modal.Title>
+              </Modal.Header>
+                  <Modal.Body>
+                     <div><p className="text-danger">Error! Sorry, this search does not exist please try searching with information. if you dont wish to search then press close or cancel</p> </div> 
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <Button variant="secondary" onClick={this.handleClose}>
+                      Close
+                    </Button>
+                  </Modal.Footer>
+            </Modal>
         </div>
           
         <footer className={styles.footer}>

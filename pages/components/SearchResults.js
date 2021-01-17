@@ -6,7 +6,7 @@ class SearchResults extends React.Component{
     constructor(props)
     {
         super(props);
-
+        
         this.state = {
             results: []
         }
@@ -18,6 +18,7 @@ class SearchResults extends React.Component{
         this.props.updateMovies(movie);
     }
 
+   
     // checkBannedList = (id) =>{
     //     let x = this.props.banList;
     //     for(var i=0; i<x.length; i++){
@@ -57,6 +58,7 @@ class SearchResults extends React.Component{
                     </tbody>
                 </table>
             </div>
+            
         </div>)
 
     }

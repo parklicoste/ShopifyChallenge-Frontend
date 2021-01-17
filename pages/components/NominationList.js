@@ -39,6 +39,7 @@ class NominationList extends React.Component{
 
     render(){
         return (<div className="col-md-6" >
+            <div style={{height: "550px"}}>
             <div className="row-md-6" style={{textAlign: "center"}}>
                 <h2 className="mt-5">Nominations list</h2>
             </div>
@@ -64,7 +65,8 @@ class NominationList extends React.Component{
                     </tbody>
                 </table>
             </div>
-            <div className="row-md-6 mt-5 ml-5 pl-5" style={{alignItems: "center"}}>
+            </div>
+            <div className="row-md-6 ml-5 pl-5 " style={{alignItems: "center"}}>
                 <button onClick={(e)=>this.clearAll()}  className="btn ml-5  btn-lg btn-primary"> Nominate</button>
             </div>
             <Modal show={this.state.show} onHide={this.handleClose}>

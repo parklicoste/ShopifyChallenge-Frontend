@@ -24,9 +24,12 @@ npm run dev
 yarn dev
 ```
 ## Usage
-
+Hello, as we all love movies and some of us like to nominate our favourites.
 This app is for nominating the movies, each user can nominate upto 5 movies.
 Basic error checking is done:
   - if user enters nothing it doesn't search
   - if user tries to nominate less than 5 movies, it gives alert message 
   - if user tries to add more than 5 movies it informs user.
+  
+ Functionality of adding, removing, and nominating movies are provided.
+ when there are 5 movies in nomitaion list, the user can nominate them.

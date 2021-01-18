@@ -4,6 +4,6 @@ module.exports ={
   env: {
     API : process.env.API_KEY
   },
-  // basePath : '/ShopifyChallenge-Frontend',
-  // assetPrefix: '/ShopifyChallenge-Frontend'
+  basePath : process.env.NEXT_PUBLIC_BASE_PATH,
+  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH
 };

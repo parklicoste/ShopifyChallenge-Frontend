@@ -81,7 +81,7 @@ class NominationList extends React.Component{
             <div className="row-md-6 ml-5 pl-5 " style={{alignItems: "center"}}>
                 <button onClick={(e)=>this.clearAll()}  className="btn ml-5  btn-lg btn-primary"> Nominate</button>
             </div>
-            { this.props.NominationList === undefined ? 
+            { this.props.nominations === undefined ? 
             <LessLimit show={this.state.show} handleClose={this.handleClose} limit={0} submit={this.submit}/> : <LessLimit show={this.state.show} handleClose={this.handleClose} limit={this.props.nominations.length} submit={this.submit}/>
 
     }

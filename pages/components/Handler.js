@@ -8,8 +8,8 @@ import NominationList from './NominationList';
 import MaxLimit from './modals/MaxLimit'
 import SearchError from './modals/SearchError';
 
-const API = process.env.API_KEY;
-const prefix = process.env.NEXT_PUBLIC_BASE_PATH || '';
+const API = process.env.API;
+const prefix = process.env.BASE_PATH || '';
 
 class Handler extends React.Component{
 

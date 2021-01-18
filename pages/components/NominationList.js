@@ -1,5 +1,4 @@
 import React from 'react';
-import {Modal, Button} from 'react-bootstrap'
 import LessLimit from './modals/LessLimit'
 
 class NominationList extends React.Component{

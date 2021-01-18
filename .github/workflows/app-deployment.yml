@@ -27,13 +27,13 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm run build
-        env:
-          API_KEY: http://www.omdbapi.com/?i=tt3896198&apikey=ebc8a66b
-          NEXT_PUBLIC_BASE_PATH: /ShopifyChallenge-Frontend
+        # env:
+        #   API_KEY: https://www.omdbapi.com/?i=tt3896198&apikey=ebc8a66b
+        #   NEXT_PUBLIC_BASE_PATH: /ShopifyChallenge-Frontend
     - run: npm run export
-        env:
-          NEXT_PUBLIC_API_KEY: http://www.omdbapi.com/?i=tt3896198&apikey=ebc8a66b
-          NEXT_PUBLIC_BASE_PATH: /ShopifyChallenge-Frontend
+        # env:
+        #   NEXT_PUBLIC_API_KEY: https://www.omdbapi.com/?i=tt3896198&apikey=ebc8a66b
+        #   NEXT_PUBLIC_BASE_PATH: /ShopifyChallenge-Frontend
     - run: touch ./out/.nojekyll
       
     - name: Deploy 🚀

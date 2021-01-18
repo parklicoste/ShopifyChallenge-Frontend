@@ -23,3 +23,10 @@ npm run dev
 # or
 yarn dev
 ```
+## Usage
+
+This app is for nominating the movies, each user can nominate upto 5 movies.
+Basic error checking is done:
+  - if user enters nothing it doesn't search
+  - if user tries to nominate less than 5 movies, it gives alert message 
+  - if user tries to add more than 5 movies it informs user.
